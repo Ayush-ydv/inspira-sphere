@@ -6,6 +6,7 @@ import { getCurrentUser } from '@/lib/session';
 import { signOut } from 'next-auth/react';
 import ProfileMenu from './ProfileMenu';
 import Button from './Button';
+import { SessionInterface } from '@/common.types';
 
 const Navbar = async() => {
 
@@ -34,7 +35,7 @@ const Navbar = async() => {
         {session?.user ? (
           <>
             
-            <ProfileMenu session={session} />
+            <ProfileMenu session={session as SessionInterface} />
 
             <Link href="/create-project">
               <Button title='Share work' />

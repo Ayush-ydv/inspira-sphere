@@ -4,7 +4,7 @@ import Modal from "@/components/Modal";
 import ProjectForm from "@/components/ProjectForm";
 import { getCurrentUser } from "@/lib/session";
 import { getProjectDetails } from "@/lib/actions";
-import { ProjectInterface } from "@/common.types";
+import { ProjectInterface, SessionInterface } from "@/common.types";
 
 const EditProject = async ({ params: { id } }: { params: { id: string } }) => {
   const session = await getCurrentUser();
@@ -20,8 +20,8 @@ const EditProject = async ({ params: { id } }: { params: { id: string } }) => {
   return (
     <Modal>
       <h3 className="modal-head-text">Edit Project</h3>
-
-      <ProjectForm type="edit" session={session} project={result?.project} />
+        
+      <ProjectForm type="edit" session={session as SessionInterface} project={result?.project} />
     </Modal>
   );
 };
